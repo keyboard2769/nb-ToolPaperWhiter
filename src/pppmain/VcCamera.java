@@ -27,7 +27,7 @@ public class VcCamera {
   private static Capture cmCamera = null;
   private static final StringList O_CAM_DICT = new StringList();
   private static int cmIndex=0;
-  private static String cmPresent="<undeteted>";
+  private static String cmPresent="<undetected>";
   
   public static final void ccDetect(){
     O_CAM_DICT.clear();

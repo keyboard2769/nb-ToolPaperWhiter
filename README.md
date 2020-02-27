@@ -4,10 +4,10 @@ even not a paper or white at all
 
 ---
 ## actually it just apply threshold to a image
-- the image should be png file on your disc
+- the image should be a png file on your disc
 - or  captured though your web-cam
 - but the capturing thing does not always work
-- it may crash hardly even though you did meant to use it
+- it may crash hardly even though you didnt meant to use it
 - but anyway some time it works
 
 ---
