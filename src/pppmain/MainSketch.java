@@ -137,7 +137,7 @@ public class MainSketch extends PApplet{
   
   static public final PApplet ccGetPApplet(){return self;}//+++
   
-  static public final String ccGetLastStamp(){return "_2002271033";}//+++
+  static public final String ccGetLastStamp(){return "_2002271042";}//+++
   
   static public void main(String[] passedArgs) {
     PApplet.main(MainSketch.class.getCanonicalName());
