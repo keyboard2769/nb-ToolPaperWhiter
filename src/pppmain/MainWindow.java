@@ -18,6 +18,7 @@
 
 package pppmain;
 
+import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
@@ -67,6 +68,9 @@ public final class MainWindow {
   public static final JToggleButton O_PAPERWHITE_SS
    = ScFactory.ccCreateCommandToggler("Paperwhite");
   
+  public static final JButton O_COLOR_SW
+   = ScFactory.ccCreateCommandButton("*");
+  
   public static final JButton O_EXPORT_SW
    = ScFactory.ccCreateCommandButton("Export");
   
@@ -86,6 +90,10 @@ public final class MainWindow {
       //-- config ** mode
       O_PAPERWHITE_SS.setSelected(true);
       
+      //-- config ** color switch
+      O_COLOR_SW.setBackground(Color.BLACK);
+      O_COLOR_SW.setToolTipText("choose filtered color");
+      
       //-- config ** box
       O_THRESHOLD_TB.setBackground(ScConst.C_LIT_GRAY);
       O_THRESHOLD_TB.setDisabledTextColor(ScConst.C_DIM_BLUE);
@@ -97,13 +105,14 @@ public final class MainWindow {
       lpAdjustJPanel.add(O_HARDER_SW);
       
       //-- center
-      JPanel lpButtonPane = ScFactory.ccCreateGridPanel(9, 1);
+      JPanel lpButtonPane = ScFactory.ccCreateGridPanel(10, 1);
       lpButtonPane.add(O_IMPORT_SW);
       lpButtonPane.add(new JSeparator(SwingConstants.HORIZONTAL));
       lpButtonPane.add(O_CAMERA_SS);
       lpButtonPane.add(O_CAPTURE_SW);
       lpButtonPane.add(new JSeparator(SwingConstants.HORIZONTAL));
       lpButtonPane.add(O_PAPERWHITE_SS);
+      lpButtonPane.add(O_COLOR_SW);
       lpButtonPane.add(lpAdjustJPanel);
       lpButtonPane.add(new JSeparator(SwingConstants.HORIZONTAL));
       lpButtonPane.add(O_EXPORT_SW);
@@ -134,6 +143,8 @@ public final class MainWindow {
         (O_HARDER_SW, MainActionManager.ccRefer().cmLetHardening);
       VcSwingCoordinator.ccRegisterPressing
         (O_THRESHOLD_TB, MainActionManager.ccRefer().cmLetThresholdInputting);
+      VcSwingCoordinator.ccRegisterAction
+        (O_COLOR_SW, MainActionManager.ccRefer().cmColorChooseRunning);
       VcSwingCoordinator.ccRegisterAction
         (O_CAPTURE_SW, MainActionManager.ccRefer().cmLetCameraCapturing);
       

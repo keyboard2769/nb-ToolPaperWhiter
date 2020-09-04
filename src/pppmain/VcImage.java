@@ -34,6 +34,7 @@ public final class VcImage {
   
   static private PImage cmOringin  = null;
   static private PImage cmFiltered = null;
+  static private int cmFilteredColor = 0xFF000000;
   
   //===
   
@@ -88,6 +89,15 @@ public final class VcImage {
     cmFiltered=null;
     cmFiltered=cmOringin.get();
     cmFiltered.filter(PApplet.THRESHOLD,cmThresholdFactor);
+    cmFiltered.loadPixels();
+    for(int i=0, s=cmFiltered.pixels.length;i<s;i++){
+      int lpBuf = cmFiltered.pixels[i];
+      cmFiltered.pixels[i]=(lpBuf < 0xFF777777)?
+        (cmFilteredColor)
+        :
+        (lpBuf);
+    }//..~
+    cmFiltered.updatePixels();
   }//+++
   
   public static final void ccExportImage(String pxLocation){
@@ -108,6 +118,10 @@ public final class VcImage {
   public static final void ccSetLocation(int pxX, int pxY){
     cmX = pxX;
     cmY = pxY;
+  }//+++
+  
+  public static final void ccSetFilteredColor(int pxColor){
+    cmFilteredColor=pxColor;
   }//+++
   
   public static final void ccShiftLocation(int pxOffsetX, int pxOffsetY){

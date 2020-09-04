@@ -37,6 +37,7 @@ public class MainSketch extends PApplet{
     = "press right mouse button to bring menu up."+VcConst.C_V_NEWLINE
     + "[w/s] to select camera if there are availables."+VcConst.C_V_NEWLINE
     + "[r] or 'capture' button to take a capture."+VcConst.C_V_NEWLINE
+    + "[c] or color button to choose filtered color."+VcConst.C_V_NEWLINE
     + "[q] to quit."+VcConst.C_V_NEWLINE
     + "have fun"+VcConst.C_V_NEWLINE;
 
@@ -72,10 +73,14 @@ public class MainSketch extends PApplet{
       (java.awt.event.KeyEvent.VK_W, VcCamera.O_INDEX_INCRECING);
     VcLocalCoordinator.ccRegisterKeyTrigger
       (java.awt.event.KeyEvent.VK_S, VcCamera.O_INDEX_DECRECING);
+    VcLocalCoordinator.ccRegisterKeyTrigger
+      (java.awt.event.KeyEvent.VK_C, 
+        MainActionManager.ccRefer().cmColorChooseRunning);
     
     //-- post
     VcImage.ccSetLocation(width/2, height/2);
     println(".setup $ end");
+    println(".conscious $ b"+ccGetLastStamp());
     
   }//+++
 
@@ -137,7 +142,7 @@ public class MainSketch extends PApplet{
   
   static public final PApplet ccGetPApplet(){return self;}//+++
   
-  static public final String ccGetLastStamp(){return "_2002271042";}//+++
+  static public final String ccGetLastStamp(){return "_2009041349";}//+++
   
   static public void main(String[] passedArgs) {
     PApplet.main(MainSketch.class.getCanonicalName());

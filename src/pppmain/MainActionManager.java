@@ -18,9 +18,11 @@
 
 package pppmain;
 
+import java.awt.Color;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
+import javax.swing.JColorChooser;
 import javax.swing.SwingUtilities;
 import kosui.ppplocalui.EiTriggerable;
 import kosui.pppmodel.McConst;
@@ -162,6 +164,26 @@ public final class MainActionManager {
   public final EiTriggerable cmLetCameraCapturing = new EiTriggerable() {
     @Override public void ccTrigger() {
       VcLocalCoordinator.ccInvokeLater(VcCamera.O_CAMERA_CAPTURING);
+    }//+++
+  };//***
+  
+  public final Runnable cmColorChoosing = new Runnable() {
+    @Override public void run() {
+      Color lpColor = JColorChooser.showDialog(
+        MainSketch.ccGetPApplet().frame,
+        "Filtered Color",
+        Color.BLACK
+      );
+      if(lpColor==null){return;}
+      MainWindow.O_COLOR_SW.setBackground(lpColor);
+      int lpColorCode = lpColor.getRGB();
+      VcImage.ccSetFilteredColor(lpColorCode);
+    }//+++
+  };//***
+  
+  public final EiTriggerable cmColorChooseRunning = new EiTriggerable() {
+    @Override public void ccTrigger() {
+      SwingUtilities.invokeLater(cmColorChoosing);
     }//+++
   };//***
   
