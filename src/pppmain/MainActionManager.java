@@ -69,7 +69,7 @@ public final class MainActionManager {
     @Override public void ccTrigger() {
       File lpFile = ScConst.ccGetFileByFileChooser('f');
       if(lpFile==null){return;}
-      boolean lpVerified = McConst.ccVerifyFileForLoading(lpFile, "png");
+      boolean lpVerified = McConst.ccVerifyFileForLoading(lpFile, "png")>=0;
       if(!lpVerified){
         ScConst.ccErrorBox("failed to open file");
         return;
@@ -144,7 +144,7 @@ public final class MainActionManager {
       ScConst.ccSetFileChooserButtonText("Save");
       File lpFile = ScConst.ccGetFileByFileChooser('f');
       if(lpFile==null){return;}
-      boolean lpToSave=McConst.ccVerifyFileForSaving(lpFile);
+      boolean lpToSave=McConst.ccVerifyFileForSaving(lpFile)==0;
       if(!lpToSave){return;}
       MainWindow.vmExportLocation = lpFile.getAbsolutePath();
       VcLocalCoordinator.ccInvokeLater(cmExporting);

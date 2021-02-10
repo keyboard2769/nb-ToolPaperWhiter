@@ -56,8 +56,8 @@ public class MainSketch extends PApplet{
     frame.addWindowListener(MainActionManager.ccRefer().cmClosing);
     EcConst.ccSetupSketch(this);
     EcElement.ccSetOwner(this);
-    VcLocalCoordinator.ccGetInstance().ccInit(this);
-    VcLocalTagger.ccGetInstance().ccInit(this);
+    VcLocalCoordinator.ccInit(this);
+    VcLocalTagger.ccInit(this);
     SwingUtilities.invokeLater(MainWindow.O_SETUP);
     self = this;
     
